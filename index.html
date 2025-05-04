@@ -5,48 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Personal profile website of [Ae], showcasing skills, experience, and portfolio">
     <title>[Ae] | Professional Profile</title>
-    <style>
-        /* Basic styling for demonstration - should be moved to external CSS */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        header, footer, section {
-            padding: 20px 0;
-            margin: 20px 0;
-        }
-        nav ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            gap: 20px;
-        }
-        a {
-            color: #0066cc;
-            text-decoration: none;
-        }
-        a:hover, a:focus {
-            text-decoration: underline;
-            outline: 2px solid #0066cc;
-        }
-        .skip-link {
-            position: absolute;
-            left: -10000px;
-            top: auto;
-            width: 1px;
-            height: 1px;
-            overflow: hidden;
-        }
-        .skip-link:focus {
-            position: static;
-            width: auto;
-            height: auto;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Skip to main content link for keyboard users -->
@@ -59,12 +18,12 @@
             <p role="doc-subtitle">Web Developer &amp; Accessibility Specialist</p>
             
             <nav aria-label="Primary navigation">
-                <ul role="menubar">
-                    <li role="menuitem"><a href="#about">About</a></li>
-                    <li role="menuitem"><a href="#experience">Experience</a></li>
-                    <li role="menuitem"><a href="#skills">Skills</a></li>
-                    <li role="menuitem"><a href="#portfolio">Portfolio</a></li>
-                    <li role="menuitem"><a href="#contact">Contact</a></li>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
         </div>
@@ -116,7 +75,7 @@
                 
                 <section aria-labelledby="tech-skills-heading">
                     <h3 id="tech-skills-heading">Technical Skills</h3>
-                    <ul>
+                    <ul class="skills-list">
                         <li>HTML5, CSS3, JavaScript (ES6+)</li>
                         <li>React, Vue.js, Angular</li>
                         <li>Node.js, Express</li>
@@ -126,7 +85,7 @@
                 
                 <section aria-labelledby="soft-skills-heading">
                     <h3 id="soft-skills-heading">Professional Skills</h3>
-                    <ul>
+                    <ul class="skills-list">
                         <li>Accessibility Auditing</li>
                         <li>Technical Writing</li>
                         <li>Public Speaking</li>
@@ -141,19 +100,19 @@
             <div class="container">
                 <h2 id="portfolio-heading">Portfolio</h2>
                 
-                <div class="portfolio-grid" role="grid">
-                    <article role="gridcell" aria-labelledby="project1-heading">
+                <div class="portfolio-grid">
+                    <article aria-labelledby="project1-heading">
                         <h3 id="project1-heading">Accessible E-Commerce Platform</h3>
                         <img src="project1.jpg" alt="Screenshot of e-commerce website showing product listings" width="300" height="200">
                         <p>Fully keyboard-navigable online store with screen reader support</p>
-                        <a href="#" aria-label="View details about Accessible E-Commerce Platform">View Project</a>
+                        <a href="#" class="btn">View Project Details</a>
                     </article>
                     
-                    <article role="gridcell" aria-labelledby="project2-heading">
+                    <article aria-labelledby="project2-heading">
                         <h3 id="project2-heading">Government Portal Redesign</h3>
                         <img src="project2.jpg" alt="Before and after comparison of government website redesign" width="300" height="200">
                         <p>WCAG 2.1 AA compliant redesign of municipal website</p>
-                        <a href="#" aria-label="View details about Government Portal Redesign">View Project</a>
+                        <a href="#" class="btn">View Project Details</a>
                     </article>
                 </div>
             </div>
@@ -164,26 +123,26 @@
             <div class="container">
                 <h2 id="contact-heading">Get In Touch</h2>
                 
-                <form aria-labelledby="contact-heading" method="post">
-                    <div>
+                <form aria-labelledby="contact-heading" method="post" class="contact-form">
+                    <div class="form-group">
                         <label for="name">Full Name:</label>
                         <input type="text" id="name" name="name" required aria-required="true">
                     </div>
                     
-                    <div>
+                    <div class="form-group">
                         <label for="email">Email:</label>
                         <input type="email" id="email" name="email" required aria-required="true">
                     </div>
                     
-                    <div>
+                    <div class="form-group">
                         <label for="message">Message:</label>
                         <textarea id="message" name="message" rows="5" required aria-required="true"></textarea>
                     </div>
                     
-                    <button type="submit">Send Message</button>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
                 </form>
                 
-                <address>
+                <address class="contact-info">
                     <h3>Other Contact Methods</h3>
                     <p>Email: <a href="mailto:contact@example.com">contact@example.com</a></p>
                     <p>Phone: <a href="tel:+15551234567">(555) 123-4567</a></p>
@@ -196,7 +155,7 @@
     <!-- Footer -->
     <footer role="contentinfo">
         <div class="container">
-            <p>copy; <span id="current-year"></span> [Your Name]. All rights reserved.</p>
+            <p>&copy; <span id="current-year"></span> [Your Name]. All rights reserved.</p>
             <nav aria-label="Secondary navigation">
                 <ul>
                     <li><a href="#">Privacy Policy</a></li>
@@ -210,13 +169,6 @@
     <script>
         // Simple script to update copyright year
         document.getElementById('current-year').textContent = new Date().getFullYear();
-        
-        // Add focus styles for keyboard navigation
-        document.addEventListener('keyup', function(e) {
-            if (e.key === 'Tab') {
-                document.documentElement.classList.add('keyboard-nav');
-            }
-        });
     </script>
 </body>
 </html>
